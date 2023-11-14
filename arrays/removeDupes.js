@@ -22,10 +22,12 @@ const removeDuplicates = nums => {
     let ptr2 = 1;        
 
 
+    const DUPLICATE_MARKER = '_';
+
     // iterate until ptr2 goes out of bounds
     while (ptr2 < nums.length) {
         if (nums[ptr1] === nums[ptr2]) {
-            nums[ptr2] = '_' ;
+            nums[ptr2] = DUPLICATE_MARKER;
             
         }
         else if (nums[ptr1] < nums[ptr2]) {
