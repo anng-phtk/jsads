@@ -33,6 +33,14 @@ arr.forEach(element => {
 
 // reduce
 let candies = [4,2,1,1,2]
+
+console.log(candies[-1])
+
 const max = candies.reduce((a, b) => (a > b ? a : b));
 
-console.log(max)
+
+console.log(max);
+
+
+let maxCandies = Math.max(...candies);
+console.log("destructured max..", maxCandies);
