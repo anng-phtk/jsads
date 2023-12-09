@@ -39,7 +39,25 @@ console.log(candies[-1])
 const max = candies.reduce((a, b) => (a > b ? a : b));
 
 
-console.log(max);
+console.log(`max = ${max}`);
+
+let sentence = "the quick brown fox".split('');
+
+console.log(`sentence: ${sentence}`)
+
+let letters = (['x','a','f','e','v','t','o','u','z','x']).reduce((a,b)=> {
+    console.log(`reduce: ${a},${b}`)
+    
+    let vowelSet = new Set(['a','e','i','o','u']);
+    if (!vowelSet.has(a)) {
+        a = null;
+    }
+
+    return a;
+} );
+
+console.log(`letters: ${letters}`);
+
 
 
 let maxCandies = Math.max(...candies);
