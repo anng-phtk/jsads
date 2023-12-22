@@ -3,31 +3,61 @@
  * @return {boolean}
  */
 
-const evalLeftArray = (leftNums) => {
 
-}
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
 
-const increasingTriplets = (nums) => {
-    let [answer, leftEval, rightEval] = [false,false,false];
+const increasingTriplet = nums => {
 
-    let [i,j,l] = [0,1,2]; // indexes for which we will compare these values 
+    let answer = false;
+    
+    if (!testBogusUseCase(nums)) return false;
+
+    let j = 1;
+    let halfN = Math.floor(nums.length / 2);
     
     outerWhile:
-    while(j <= nums.length-2) {
+    while (j < nums.length - 2) {
+        if (j <= halfN) {
+            // 1st evaluate left of j
+            leftLoop:
+            for (let n = j - 1; n >= 0; n--) {
+                leftEval = (nums[n] < nums[j]);     // if we are asked to return a valid triplet, the datatype can be changed from bool to int
+                if (leftEval) break leftLoop;
+            }
 
-        // 1st evaluate left of j
-        leftLoop:
-        for (let n=j-1; n>=0;n--) {
-            leftEval = (nums[n] < nums[j]);
-            if (leftEval) break; 
+
+            // we can make an assumption that if there is no number smaller than j in the left side of j, there is no point in looking for a triplet anymore
+            // thus ignore the rest of the loop and iterate again starting with while
+            if (!leftEval) continue outerWhile;
+
+            rightLoop:
+            for (let n = j + 1; n < nums.length; n++) {
+                rightEval = (nums[j] < nums[n]);
+                // we found a valid number, so no point in looking further
+                if (rightEval) break rightLoop;
+            }
         }
+        else {
+            // in the 2nd half of a big array 
+            // 1st right side left of j
+            rightLoop:
+            for (let n = j + 1; n < nums.length; n++) {
+                rightEval = (nums[j] < nums[n]);
+                if (rightEval) break rightLoop;
+            }
 
-        // now evalutate all numbers to the right of j
-        rightLoop:
-        for (let n=j+1; n< nums.length; n++) {
-            rightEval = (nums[j] < nums[n]);
+            // we can make an assumption that if there is no number smaller than j in the left side of j, there is no point in looking for a triplet anymore
+            // thus ignore the rest of the loop and iterate again starting with while
+            if (!rightEval) continue outerWhile;
 
-            if (rightEval) break rightLoop;
+            leftLoop:
+            for (let n = j - 1; n >= 0; n--) {
+                leftEval = (nums[n] < nums[j]);     // if we are asked to return a valid triplet, the datatype can be changed from bool to int
+                if (leftEval) break leftLoop;
+            }
         }
 
         if (leftEval && rightEval) {
@@ -37,155 +67,31 @@ const increasingTriplets = (nums) => {
         else {
             j++;
         }
+
     }
-    
+
 
 
     return answer;
 }
 
+const testBogusUseCase = nums => {
+    let testingMap = new Map();
 
-/**
-Analysis
-========
-
-set small and large numbers to infinity
-setup an array triplets = [];
-
-also add a var smallIdx and set to -1;
-
-for loop
-    loop where i = 0:
-        if: (nums[i ie 0] ie 20) <= (small ie infinte)) ie true //for 1st loop is always going to true
-            set small = nums[i ie 0]
-            set (smallIdx = i) ie 0 
-
-    end     
-    loop where i = 1
-        if: (nums[i@1] ie 100) <= small ie 20) ie false
-
-        else if: (nums[i@1] ie 100) <= large ie inifinite) ie true [or] (smallIdx =-1) ie false // we set the smallIdx in previos iteration
-            large = nums[i@1] ie 100
-    end
-    loop where i = 2
-        if: (nums[i@2] ie 10) <= small ie 20) ie true
-            set small = nums[i@2] ie 10 
-            set smallIdx = i ie 2
-    end
-current variable state is:
-    smallIdx = 2
-    small = 10
-    large = 100
-
-    loop where i = 3
-        if: (nums[i@3] ie 12) <= small ie 10) ie false
-        else if: (nums[i@3] ie 12) <= large ie 100) ie true [or (smallIdx ie 2 = -1) ie false] // go into else if
-            large = nums[i@3] ie 12
-    end
-
-    current variable state is:
-    smallIdx = 2
-    small = 10
-    large = 12
-
-    loop where i =4
-        if: (nums[i@4] ie 5) <= small ie 10) ie true
-            set small = nums[i@4] ie 5 
-            smallidx = 4 // update the index
-    end
-
-current variable state is:
-    smallIdx = 4
-    small = 5
-    large = 12
-
-    loop where i=5
-        if: (nums[i@5] ie 13) <= small ie 5) ie false
-        else if: (nums[i@5] ie 13) <= large ie 12) ie false [or (smallIdx ie 4 = -1) ie false] // next clause
-        else:
-            triplets = [smallidx ie 4, i ie 5, nums.indexOf(large ie 12) ie 3];
-            thus
-            triplets value comes out to [4,5,]
-
-    
- */
-
-            const findIncreasingTriplet = (nums) => {
-                let small = Infinity;
-                let large = Infinity;
-                let smallIdx = -1;
-                let tripletIndices = [];
-            
-                for (let i = 0; i < nums.length; i++) {
-                    if (nums[i] <= small) {
-                        small = nums[i];
-                        smallIdx = i;
-                    } else if (nums[i] <= large || smallIdx === -1) {
-                        large = nums[i];
-                    } else {
-                        tripletIndices = [smallIdx, i, findLastIndex(nums, large, smallIdx, i)];
-                        return tripletIndices;
-                    }
-                }
-            
-                return tripletIndices; // Empty array if no triplet found
-            };
-            
-            const findLastIndex = (nums, target, start, end) => {
-                for (let i = end; i >= start; i--) {
-                    if (nums[i] === target) {
-                        return i;
-                    }
-                }
-                return -1; // Not found
-            };
-            
-            // Example usage:
-            const nums = [20, 100, 10, 12, 5, 13];
-            console.log(findIncreasingTriplet(nums)); // Output: [2, 4, 5]
-
-
-
-
-
-findIncreasingTriplet([20, 100, 10, 12, 5, 13]);
-
-findIncreasingTriplet([4, 3, 2, 1]);
-
-
-var increasingTriplet2 = function (nums) {
-    let slowPtr = 0;
-    let fastPtr = 1;
-    let answer = new Set();
-    for (let i = 0; i < nums.length; i++) {
-
-        console.log(slowPtr, fastPtr);
-
-        if (!answer.size && !(nums[slowPtr] < nums[fastPtr])) {
-            slowPtr++;
-            fastPtr++;
+    for (let idx in nums) {
+        if (testingMap.has(nums[idx])) {
+            testingMap.set(nums[idx], testingMap.get(nums[idx]).push(idx));
         }
-        else if (nums[slowPtr] < nums[fastPtr]) {
-            answer.add(slowPtr);
-            answer.add(fastPtr);
-            slowPtr++;
-            fastPtr++;
-        }
-        else if (answer.size && !(nums[slowPtr] < nums[fastPtr])) {
-            fastPtr++;
-        }
-
-
-
-
-        if (answer.size === 3) {
-            break;
+        else {
+            testingMap.set(nums[idx], [idx]);
         }
     }
-    console.log(answer);
 
-    return (answer.size === 3);
-};
+    
+    // this will take care of leet code's bogus arrays of [all 1s] or [all 1,2,1,2,...]
+    return (testingMap.size > 2); // valid triplet
+}
 
-//increasingTriplet([1,2,3,4,5]);
-//increasingTriplet([5,4,3,2,1]);
+let m = increasingTriplet([1,2,3,4,5]);
+
+console.log(m);
