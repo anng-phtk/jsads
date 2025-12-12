@@ -3,7 +3,8 @@ This folder contains CSV files to track completed problems.	|
 
 **Phase 0** – Warm-up & Fixed Window (get the muscle memory)	
 Master fixed-size window + basic counters
-
+| #| LC num | title|
+|:---|:---|:---|
 |	1.	|	 643.	|	 Maximum Average Subarray I|	  
 |	2.	|	 1456.	|	 Maximum Number of Vowels in a Substring of Given Length|	  
 |	3.	|	 1343.	|	 Number of Subarrays of Size K and Average ≥ Threshold|	  
