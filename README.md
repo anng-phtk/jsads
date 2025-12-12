@@ -6,7 +6,7 @@ Organized into Data Structures and Algorithms paradigms. Track progress using th
 
 ## Documentation and Notes
 
-1. **Understanding Pointers and Windows:** [Detailed explanation of Two Pointers, Sliding Window, and Rolling Window techniques] (documentation/Difference_Windows_Pointers.md)
+*   **Understanding Pointers and Windows:** [Detailed explanation of Two Pointers, Sliding Window, and Rolling Window techniques](documentation/Difference_Windows_Pointers.md)
 
 ---
 
