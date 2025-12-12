@@ -17,7 +17,8 @@ All fixed size k → you learn the sliding template without thinking about expan
 
 Phase 1 – Classic Variable Window (the 4 immortal ones + direct extensions)	
 Internalize the “while condition → shrink left” pattern
-
+| #| LC num | title|
+|:---|:---|:---|
 |   8.	|	 3.	    |	 Longest Substring Without Repeating Characters|  
 |	9.	|	 424.	|	 Longest Repeating Character Replacement|	  
 |	10.	|	 76.	|	 Minimum Window Substring (solve twice)  
@@ -29,7 +30,8 @@ Internalize the “while condition → shrink left” pattern
 
 These are the archetypes.Everything else is a remix of these
 2 – “At Most / Exactly / At Least” family. Master the three canonical tricks
-
+| #| LC num | title|
+|:---|:---|:---|
 |	16.	|	 1004.	|	 Max Consecutive Ones III|	  
 |	17.	|	 487.	|	 Max Consecutive Ones II|	  
 |	18.	|	 1493.	|	 Longest Subarray of 1’s After Deleting One Element|	  
@@ -43,7 +45,8 @@ These are the archetypes.Everything else is a remix of these
 
 “At most k bad things” and “exactly k” via subtraction are the two biggest unlocks
 3 – Clever / Weird Windows (the ones that feel unfair at first). Expand your pattern library
-
+| #| LC num | title|
+|:---|:---|:---|
 |	25.	|	 1234.	|	 Replace the Substring for Balanced String|	  
 |	26.	|	 2024.	|	 Maximize the Confusion of an Exam|	  
 |	27.	|	 1658.	|	 Minimum Operations to Reduce X to Zero|	  
@@ -59,6 +62,8 @@ These look impossible until you realize they’re still sliding window in disgui
 4 – The Rest – Mop-up + Contest-style (do in any order inside the phase)
 
 Cement everything + speed	
+| #| LC num | title|
+|:---|:---|:---|
 | 35–116.	|	 All remaining 82 problems from your list (I recommend sorting by acceptance rate descending inside this phase)	|	
 
 At this point you will crush all of them in ≤30 min each
