@@ -1,5 +1,5 @@
-|Problem Number|Problem Name | Status | Level | URL | Status|
-| :--- | :----:|:----:|:----:| :--- | ---:|
+|Problem Number|Problem Name | Acceptance | Level | URL | Status|
+| ---: | :--- |:----:|:----:| :--- | ---:|
 |3.	|	Longest Substring Without Repeating Characters	|	38.0% 	|	Med.	|	|		|	|		|
 |159.	|	Longest Substring with At Most Two Distinct Characters	|	56.8% 	|	Easy	|	|		|
 |187.	|	Repeated DNA Sequences	|	52.4% 	|	Med.	|	|		|

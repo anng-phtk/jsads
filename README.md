@@ -10,7 +10,8 @@ Organized into Data Structures and Algorithms paradigms. Track progress using th
 
 
 ## The Path Forward
-*   **Two Pointers, Rolling Windows, Sliding Windows:** [Sliding Window Problem List](progress/SlidingWindow.md)    
+*   **Two Pointers, Rolling Windows, Sliding Windows:** [Sliding Window Problem List](progress/SlidingWindow.md)
+*   **Sliding Window Curated List** [List](progress/SlidingWindow_Curated_List.csv)
 *   **PrefixSums:**
 ---
 
