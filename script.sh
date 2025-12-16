@@ -1,78 +1,31 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
-# This script creates the intelligent leetcode study folder structure in Bash.
+set -e
 
-BASE_DIR="."
-JS_TS_DIR="${BASE_DIR}/jsts"
-PYTHON_DIR="${BASE_DIR}/python"
-PROGRESS_DIR="${BASE_DIR}/progress"
-DOCS_DIR="${BASE_DIR}/documentation"
+BASE_DIR=$(pwd)
 
-echo "Creating main base directories..."
+create_lang_structure () {
+  LANG_DIR=$1
 
-mkdir -p "${PROGRESS_DIR}"
-mkdir -p "${DOCS_DIR}"
-mkdir -p "${JS_TS_DIR}"
-mkdir -p "${PYTHON_DIR}"
+  echo "Setting up directory structure for: $LANG_DIR"
 
-# --- Define the intelligent structure within a function for reuse ---
-create_structure() {
-    local lang_dir=$1
-    echo "Creating structure within ${lang_dir}..."
+  mkdir -p "$LANG_DIR"/Mechanics/Two_Pointers/{Sliding_Window,Fast_Slow,Left_Right}
+  mkdir -p "$LANG_DIR"/Mechanics/{Prefix_Sums,Bit_Manipulation,Stack_Queue_Deque,Heap_Priority_Queue}
 
-    # Data Structures Category
-    mkdir -p "${lang_dir}/Array/Matrix"
-    mkdir -p "${lang_dir}/Array/String"
-    mkdir -p "${lang_dir}/Array/Linked_List"
-    mkdir -p "${lang_dir}/Tree/Binary_Tree"
-    mkdir -p "${lang_dir}/Tree/Binary_Search_Tree"
-    mkdir -p "${lang_dir}/Hash_Table"
-    mkdir -p "${lang_dir}/Stack_Queue_Deque"
-    mkdir -p "${lang_dir}/Graph"
-    mkdir -p "${lang_dir}/Heap_Priority_Queue"
-    mkdir -p "${lang_dir}/Trie"
-    mkdir -p "${lang_dir}/Union_Find"
+  mkdir -p "$LANG_DIR"/Strategies/{Hashing_Frequency,Greedy,Dynamic_Programming,Recursion_Backtracking,Binary_Search_On_Answer}
 
-    # Algorithms Category
-    mkdir -p "${lang_dir}/Search/Depth_First_Search_DFS"
-    mkdir -p "${lang_dir}/Search/Breadth_First_Search_BFS"
-    mkdir -p "${lang_dir}/Search/Binary_Search"
-    mkdir -p "${lang_dir}/General_Techniques/Two_Pointers_Sliding_Window_Rolling_Window"
-    mkdir -p "${lang_dir}/General_Techniques/PrefixSums"
-    mkdir -p "${lang_dir}/General_Techniques/Dynamic_Programming_Memoization"
-    mkdir -p "${lang_dir}/General_Techniques/Greedy"
-    mkdir -p "${lang_dir}/General_Techniques/Sorting"
-    mkdir -p "${lang_dir}/General_Techniques/Recursion_Backtracking"
-    mkdir -p "${lang_dir}/General_Techniques/Bit_Manipulation_Bitmask"
-    mkdir -p "${lang_dir}/Advanced_Topics/Math_Number_Theory_Geometry"
-    mkdir -p "${lang_dir}/Advanced_Topics/Simulation_Enumeration"
-    mkdir -p "${lang_dir}/Advanced_Topics/Design"
-    mkdir -p "${lang_dir}/Advanced_Topics/Concurrency_Interactive"
+  mkdir -p "$LANG_DIR"/Data_Structures/{Array_String,Linked_List,Tree,Trie,Graph,Union_Find,Matrix}
+
+  mkdir -p "$LANG_DIR"/Advanced_Topics/{Concurrency_Interactive,Design,Math_Number_Theory_Geometry,Simulation_Enumeration}
+
+  mkdir -p "$LANG_DIR"/Practice_Sets/{Sliding_Window_Certification,Prefix_Sum_Core,Heap_Core,DP_Foundations}
+
+  echo "✓ Done: $LANG_DIR"
+  echo
 }
 
-# Apply the structure function to both language directories
-create_structure "${JS_TS_DIR}"
-create_structure "${PYTHON_DIR}"
+# Create for both languages
+create_lang_structure "$BASE_DIR/jsts"
+create_lang_structure "$BASE_DIR/python"
 
-# Create placeholder files.
-echo "Creating placeholder files..."
-
-cat <<EOL > "${BASE_DIR}/README.md"
-# LeetCode Study Plan
-Welcome to my study repository! 
-
-Organized into Data Structures and Algorithms paradigms. Track progress using the CSV files in the progress/ directory.
-EOL
-
-cat <<EOL > "${PROGRESS_DIR}/README.md"
-# Progress Tracking Metadata
-This folder contains CSV files to track completed problems.
-EOL
-
-# Create the CSV files with headers
-echo "Problem Number,Problem Name,Status,Date Solved,Folder_Path" > "${PROGRESS_DIR}/progress_js_ts.csv"
-echo "Problem Number,Problem Name,Status,Date Solved,Folder_Path" > "${PROGRESS_DIR}/progress_python.csv"
-
-echo "--------------------------------------------------"
-echo "Directory structure and initial files created successfully in ${BASE_DIR}!"
-echo "--------------------------------------------------"
+echo "All directory structures created successfully."

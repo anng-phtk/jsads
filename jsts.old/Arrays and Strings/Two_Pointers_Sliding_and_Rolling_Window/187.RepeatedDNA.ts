@@ -6,11 +6,16 @@ const findRepeatedDnaSequences = (s: string): string[] => {
     for (let [i,j]: [number, number] = [0, window]; i < s.length; i++, j++) {
         let strSlice:string = s.substring(i,j);
 
-        if (freqMap.has(s.substring(i,j))) {
-            ans.push(strSlice);
+
+        if (freqMap.has(strSlice)) {
+            // how many do we see?
+            if ( freqMap.get(strSlice) === 2 ) {
+                ans.push(strSlice);
+            }
+
         }
         else {
-            freqMap.set(s.substring(i,j), 2);
+            freqMap.set(strSlice, 1);
         }
     }
 
