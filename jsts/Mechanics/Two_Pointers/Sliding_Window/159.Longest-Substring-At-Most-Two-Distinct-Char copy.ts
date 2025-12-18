@@ -86,7 +86,7 @@ console.log('sanity. result = ', longestSubstr("a"));
 
 console.log('sanity. result = ', longestSubstr("aa"));
 
-console.log('sanity. result = ', longestSubstr("ab"));
+console.log('10. result = ', longestSubstr("ab"));
 
 
 /**
