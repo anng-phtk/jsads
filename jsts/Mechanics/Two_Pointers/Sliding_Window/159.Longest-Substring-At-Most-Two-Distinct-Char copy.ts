@@ -35,8 +35,6 @@ const longestSubstr = (s:string): number => {
                 }
             }
             numDistinctSeen = temp;
-            // we skip remaining execution
-            // we could have run a while loop instead of the if, but this seems clearer that only l window is reduced
         }
 
         result = Math.max(result, r-l+1);
