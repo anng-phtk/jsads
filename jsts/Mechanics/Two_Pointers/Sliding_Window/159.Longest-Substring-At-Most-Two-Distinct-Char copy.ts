@@ -85,28 +85,3 @@ console.log('sanity. result = ', longestSubstr("a"));
 console.log('sanity. result = ', longestSubstr("aa"));
 
 console.log('10. result = ', longestSubstr("ab"));
-
-
-/**
- * 
- * 
- * 
- * 
- * let charFreq:Array<number> = new Array<number>(26).fill(0); // fixed arr size = o(1) space
-    let numDistinctSeen:number = 0;
-abc
-    // helper to convert a letter to charcode
-    const getCharIdx = (letter:string):number => {
-        return (letter.charCodeAt(0) - 'a'.charCodeAt(0));
-    }
-    // lets find out how many distinct chars are there
-    for (let i: number = 0; i < s.length; i++) {
-        let charIdx: number = getCharIdx(s[i]);
-        charFreq[charIdx]++;
-    }
-
-    // now we know
-    charFreq.forEach((val:number, idx:number)=> {
-        if (val > 0) numDistinctSeen++;
-    });
- */

@@ -65,6 +65,6 @@ const longestSubstr1Rpt = (s:string): number => {
     return result;
 }
 
-let str: string = "abba";
 
+let str: string = "abba";
 console.log('result = ', longestSubstr1Rpt(str));
