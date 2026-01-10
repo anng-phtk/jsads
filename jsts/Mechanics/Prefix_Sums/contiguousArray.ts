@@ -29,6 +29,4 @@ const findMaxLength = (nums: number[]): number =>  {
     return result;
 };
 
-let nums =[0,1,0,0,1,1]
-
 findMaxLength(nums);

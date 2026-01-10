@@ -34,11 +34,3 @@ const maxSatisfied = (customers: number[], grumpy: number[], minutes: number): n
     return totalHappyCust;
 
 };
-
-let customers = [1,0,1,2,1,1,7,5];
-let grumpy = [0,1,0,1,0,1,0,1];
-let minutes = 3;
-
-let retval = maxSatisfied(customers, grumpy, minutes);
-
-console.log(retval);
